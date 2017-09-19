@@ -14,8 +14,13 @@ About
 
 Features
 	- A landing page with an accordion header to display the instructions
+	- Pop up to enter player's names that then show throughout the game
 	- A 2 player table that keeps scores of both players
-	- 
+	- Change in appeareance after every cell has been clicked 
+	- Text announcing each player's turn 
+	- End button that allows the player's to end the game before all cells are clicked
+	- End function that ends the game once all cells are clicked
+	- Relatively responsive design
 
 Technology
 This game was built with the following core web technologies:
@@ -26,5 +31,8 @@ This game was built with the following core web technologies:
 			JQuery
 
 Constraints
+	- Time constraint: 
+		Would love to have had more time to complete some of my reach goals that I set when we first started the project such as completing the 1 player version, and adding animations. 
+
 
 
