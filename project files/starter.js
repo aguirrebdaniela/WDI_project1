@@ -241,7 +241,7 @@ function enableBack(){
 		displayCurrentTurn()
 	})
 	$("#backE").click(function (){
-		location.href="main_page.html"
+		location.href="index.html"
 	})
 }
 	
