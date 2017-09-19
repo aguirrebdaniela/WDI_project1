@@ -20,30 +20,18 @@ body#main_page {
 	margin: 0 auto;
 }
 
-#lpImage {
-    height: 200px;
-    width: 50%;
-		z-index: -1;
-    margin: 0 auto;
-    position:relative;
-    padding-top: 0px;
-}
-
-img{
-	width: 500px;
-	z-index: -1;
-	position: absolute;
-	text-align: center;
-	opacity:0.8;
-	left: -100px;
-	top: -50px;
-}
 
 h1{
 font-family: 'Finger Paint', cursive;
 font-size: 40px;
 color: black;
 margin: 20px;
+}
+
+h3{
+	color: #424242;
+font-family: 'Lato', sans-serif;
+
 }
 
 p{
@@ -54,40 +42,43 @@ margin-right: 30px;
 margin-left: 30px;
 }
 
-#player_button{
-font-family: 'Montserrat', sans-serif;
-	text-align: center;
+#glasses{
+text-align: center;
+width: 600px;
+display: inline-block;
+position: relative;
+}
+
+#leftImg{
+	width: 301px;
+  float:left;
+  margin: 0px;
+	padding: 0px;
 	display: inline;
+		z-index:1;
+		border: -2px;
 }
 
-#player_button a{
-	text-decoration: none;
-	color: black;
-	font-size: 16px;
-	display: inline;
-	padding: 50px;
-	/*background-color: #424242;*/
-	border-radius: 50%;
-	/*box-shadow: 6px 8px 10px 1px #888888;
-*/
-}
-#player_button a:hover{
-	background-color: gray;
-}
-
-#one_button{
-	margin: 30px;
-	position: absolute;
-	left: 125px;
+#rightImg{
+	width: 299px;
+  float: left;
+    margin: 0px;
+		padding: 0px;
+		display: inline;
+		z-index:-1;
 
 }
 
-#two_button{
-	margin: 30px;
-	position: absolute;
-	right: 125px;
-
+#main_left:hover {
+	background-image: url("./images/hover_left.png");
+	width: 249px;
 }
+
+#main_right:hover {
+	background-image: url("./images/hover_right.png");
+	width: 249px;
+}
+
 
 /*------------INDEX HTML CSS STYLING---------------------*/
 
@@ -258,5 +249,13 @@ background-repeat: no-repeat;
 	background-position: center ;
 		margin: 0 auto;
 		background-repeat: no-repeat;
+}
+
+#winner{
+	color: black;
+	font-family: 'Finger Paint', cursive;
+	font-size: 22px;
+
+
 }
 

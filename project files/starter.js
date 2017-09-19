@@ -1,8 +1,17 @@
+
+$("#myImage").mouseover(function () {
+    $(this).attr("class", "image-replacement");
+});
+$("#myImage").mouseout(function () {
+    $(this).attr("class", "ClassBeforeImage-replacement");
+});
+
+
 var totalPlayer1Score = 0;
 var totalPlayer2Score = 0;
-
-var playerTurn= 1
-
+var playerTurn= 1;
+var playerName1= "Player 1";
+var playerName2= "Player 2"
 
 var scorePlayer1=document.getElementById("score1").textContent
 var scorePlayer2=document.getElementById("score2").textContent
@@ -15,7 +24,6 @@ var submitButton= document.getElementById("submitB")
 var correctAnswer= ""
 var insertCorrect= document.getElementById("questionForm").textContent
 var questionBox=document.getElementById("questionBox")
-
 
 var dataSet=[
 	{clicked: false, id:"r1c1", question:"New students need to learn the secrets of the castle. How many staircases does Hogwarts have?", answer:"142", points:500, topic:"Hogwarts"},
@@ -45,16 +53,27 @@ var dataSet=[
 	{clicked: false, id:"r5c5", question:"Who played Hermione Granger in the movies?", answer:"Emma Watson", points:100, topic:"Others"},
 ]
 
-
 function startGame()
-{	document.getElementById("name1").innerHTML="Player 1"
-  document.getElementById("name2").innerHTML="Player 2"
-  document.getElementById("name1").innerHTML = document.getElementById("playerName1").value
-  document.getElementById("name2").innerHTML = document.getElementById("playerName2").value
-  
+{	
+	playerName1 = (document.getElementById("playerName1").value!="") ?document.getElementById("playerName1").value:playerName1
+	playerName2 = (document.getElementById("playerName2").value!="") ?document.getElementById("playerName2").value:playerName2
+	document.getElementById("name1").innerHTML = playerName1
+  document.getElementById("name2").innerHTML = playerName2
   lightbox_close()
   displayCurrentTurn()
 }
+
+function evaluateAnswer(correctAnswer, playerAnswer){
+	var isCorrect = false;
+	correctAnswer = correctAnswer.toUpperCase().trim();
+	playerAnswer = playerAnswer.toUpperCase().trim();
+	if(correctAnswer == playerAnswer)
+		isCorrect = true;
+	return isCorrect;
+	//True o true true.
+	// Harry, Potter, 
+}
+
 
 function enableCellClicks(){
 	$("td").click(function () {
@@ -77,17 +96,17 @@ function switchPlayerTurn(){
 function displayCurrentTurn(){
   var currentPlayerName = ""
 	if (playerTurn==1){
-		currentPlayerName=document.getElementById("playerName1").value
+		currentPlayerName=playerName1;
 	}
 	else if(playerTurn==2){
-		currentPlayerName= document.getElementById("playerName2").value
+		currentPlayerName= playerName2;
 	}
 	document.getElementById("textPlayersTurn").textContent= "It is " + currentPlayerName + "'s turn"
 }
 
 function sumPlayersScore(question){
 	if (playerTurn==1){
-		 totalPlayer1Score += question.points
+	 	 totalPlayer1Score += question.points
 		  document.getElementById("score1").textContent = "score: " + totalPlayer1Score;
 	}
 	else if (playerTurn==2){
@@ -97,6 +116,7 @@ function sumPlayersScore(question){
 }
 
 function popQuestion(question){
+	if (!(question.clicked)){
 	setQuestionMode()
 	document.getElementById("questionText").textContent= question.question;
 	$('#questionButton').unbind("click")
@@ -105,30 +125,70 @@ function popQuestion(question){
     var thisCorrectAnswer = question.answer
     var writtenAnswer = $("#answer").val()
     var questionId= question.id
-    //todo
-    //VALIDAR SI ES CLICKED FALSE
-    if (writtenAnswer == thisCorrectAnswer){
-    	succesfulAnsMode()
-    	sumPlayersScore(question)
-      document.getElementById("correctAns").textContent="That's correct!"
-     	console.log(questionId)
-     	document.getElementById(questionId).classList.add("correct")
-     	console.log()
-     }
-    else{ 
-    	notSuccesfulAnsMode()	
-    	document.getElementById("wrongAns").textContent="The correct answer is: " + question.answer
-    	document.getElementById(questionId).classList.add("incorrect")
-    }
-   $("#answer").val("")
-   switchPlayerTurn()
-    //TODO
-    // CAMBIAR A TRUE cada clicked
-    // OBTENER POR ID EL TD CAMBIAR EL ESTILO A ROJO
-    // VALIDAR SI EL JUEGO HA TERMINADO
+    
+    
+	    if (evaluateAnswer(thisCorrectAnswer, writtenAnswer)){
+	    	succesfulAnsMode()
+	    	sumPlayersScore(question)
+	      document.getElementById("correctAns").textContent="That's correct!"
+	     	console.log(questionId)
+	     	document.getElementById(questionId).classList.add("correct")
+	     	console.log()
+	     }
+	    else{ 
+	    	notSuccesfulAnsMode()	
+	    	document.getElementById("wrongAns").textContent="The correct answer is: " + question.answer
+	    	document.getElementById(questionId).classList.add("incorrect")
+	    }
+
+	   $("#answer").val("")
+	   switchPlayerTurn()
+	   question.cliked=true
+	   updateClickStatus(question.id)
+  		if (isGameCompleted()==true){
+  			endGame()
+  		}
 })
+}}
+
+function isGameCompleted(){
+ var result=true
+ $(dataSet).each(function(){
+		var question=this;
+		if (question.clicked==false){
+			result=false
+		}
+	})
+ 	return result
 }
 
+function endGame(){
+	checkWinner()
+}
+
+function checkWinner(){
+	setFinalMode()
+	if(totalPlayer1Score>totalPlayer2Score){	
+		document.getElementById("winner").innerHTML= playerName1 + " is the winner!"
+	}
+	else if(totalPlayer1Score<totalPlayer2Score){
+		document.getElementById("winner").innerHTML= playerName2 + " is the winner!"
+	}
+	else{
+		document.getElementById("winner").innerHTML=playerName1 + " and " + playerName2 + " have tied!"
+	}
+}
+
+
+function updateClickStatus(id){
+	$(dataSet).each(function(){
+		var question=this;
+		if (question.id==id){
+			question.clicked=true
+		}
+	})
+
+}
 
 function setBlankMode(){
 	$("#questionBox").hide();
@@ -139,6 +199,7 @@ function setQuestionMode(){
 	$("#questionDiv").show();
 	$("#succesfulAns").hide();
 	$("#notSuccesfulAns").hide();
+	$("#endMode").hide();
 }
 
 function notSuccesfulAnsMode(){
@@ -146,6 +207,7 @@ function notSuccesfulAnsMode(){
 	$("#questionDiv").hide();
 	$("#succesfulAns").hide();
 	$("#notSuccesfulAns").show();
+	$("#endMode").hide();
 }
 
 function succesfulAnsMode(){
@@ -153,6 +215,15 @@ function succesfulAnsMode(){
 	$("#questionDiv").hide();
 	$("#succesfulAns").show();
 	$("#notSuccesfulAns").hide();
+	$("#endMode").hide();
+}
+
+function setFinalMode(){
+	$("#questionBox").show();
+	$("#questionDiv").hide();
+	$("#succesfulAns").hide();
+	$("#notSuccesfulAns").hide();
+	$("#endMode").show();
 }
 
 function enableBack(){
@@ -167,7 +238,10 @@ function enableBack(){
 	$("#backW").click(function (){
 		setBlankMode()
 		displayCurrentTurn()
-})
+	})
+	$("#backE").click(function (){
+		location.href="main_page.html"
+	})
 }
 	
 
@@ -182,12 +256,19 @@ function getQuestion(id){
 	return result;
 }
 
+function enableTopButton(){
+	$("#endGame").click(endGame)
+}
+
+
+
 $(document).ready(function(){
-	console.log("Document ready")
-	lightbox_open()
-	setBlankMode()
-	enableCellClicks()
-	enableBack()
+	console.log("Document ready");
+	lightbox_open();
+	setBlankMode();
+	enableCellClicks();
+	enableBack();
+	enableTopButton();
 })
 
 //----------------------------------------------------

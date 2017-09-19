@@ -5,6 +5,7 @@
 	<title>Trivia</title>
 	<link rel="stylesheet" href="./style.css">
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<!-- <script type="text/javascript" src="./starter.js"></script> -->
 	<link href="https://fonts.googleapis.com/css?family=Caveat|Chelsea+Market|Finger+Paint|Lato|Montserrat|Rubik+Mono+One|Yatra+One" rel="stylesheet">
 
@@ -12,8 +13,28 @@
 <body id="main_page">
 
 <div id="containerMP">
-	<h1> Harry's Trivia </h1>
-	<p>Instructions: 
+
+<script>
+  $( function() {
+    $( "#accordion" ).accordion({
+      collapsible: true, active:false
+    });
+
+    $("#image1").hover(function (){
+    	  $("#image1").src = "imagensombreado.jpg"
+    })
+
+    $("#image1").blur(function (){
+    	  $("#image1").src = "imagennormal.jpg"
+    })
+
+  } );
+  </script>
+  <h1> Harry's Trivia </h1>
+  <div  id="accordion">
+	<h3> Rules of The Game <em> (click here!) </em></h3>
+	<div>
+	<p>
 		Pick a game mode! 
 		In "1 player" mode, you will play against the clock. You have 5 minutes to answer as many questions as possible! <br>
 
@@ -22,18 +43,19 @@
 		Have fun!
 
 	</p>
-	<div id="player_button">
-		<div id="one_button">
-			<a href="#"> 1 player&nbsp;&nbsp; </a>
-		</div>
+	</div>
 
-		<div id="two_button">
-			<a href="index.html"> 2 players </a>
-		</div>
-	</div>
-	<div id="lpImage">
-	<img id="landing" src="./images/background-main.jpg" sizes="50px">
-	</div>
+  </div>
+
+			<div id="glasses">
+				<div id="main_right">
+					<a href="#"> <img id="leftImg" src="./images/main_left.png">  </a>
+				</div>
+				<div id="main_left">
+					<a href="index.html"> <img id="rightImg" src="./images/main_right.png"> </a>
+				</div>
+			</div>
+
 
 </div>
 </body>
