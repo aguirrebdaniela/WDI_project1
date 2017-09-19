@@ -46,7 +46,7 @@ var dataSet=[
 	{clicked: false, id:"r4c3", question:"Who gives Harry the Invisibility cloak?", answer:"Dumbledore", points:200, topic:"Harry"},
 	{clicked: false, id:"r4c4", question:"Voldemort's snake is called Nagiri (true/false)", answer:"False. It's called Nagini", points:200, topic:"Voldemort"},
 	{clicked: false, id:"r4c5", question:"Who played Ron Weasley in the movies?", answer:"Rupert Grint", points:200, topic:"Others"},
-	{clicked: false, id:"r5c1", question:"From what King's Cross platform does the Hogwarts Express leave? (numerical)", answer:["9 3/4"] , points:100, topic:"Hogwarts"},
+	{clicked: false, id:"r5c1", question:"From what King's Cross platform does the Hogwarts Express leave? (numerical)", answer:"9 3/4", points:100, topic:"Hogwarts"},
 	{clicked: false, id:"r5c2", question:"The spell 'Wingardium Leviosa' turns the target to stone (true/false)", answer:"false", points:100, topic:"Magic"},
 	{clicked: false, id:"r5c3", question:"Who comes to pick up Harry when he's old enough to go to Hogwarts?", answer:"Hagrid", points:100, topic:"Harry"},
 	{clicked: false, id:"r5c4", question:"Into which House have most Death Eaters who attended Hogwarts been sorted?", answer:"Slytherin", points:100, topic:"Voldemort"},
@@ -170,13 +170,15 @@ function checkWinner(){
 	setFinalMode()
 	if(totalPlayer1Score>totalPlayer2Score){	
 		document.getElementById("winner").innerHTML= playerName1 + " is the winner!"
-
+		document.getElementById("winnerImage").classList.add("winnerImage")
 	}
 	else if(totalPlayer1Score<totalPlayer2Score){
 		document.getElementById("winner").innerHTML= playerName2 + " is the winner!"
+		document.getElementById("winnerImage").classList.add("winnerImage")
 	}
 	else{
 		document.getElementById("winner").innerHTML=playerName1 + " and " + playerName2 + " have tied!"
+		document.getElementById("winnerImage").classList.add("tiedImage")
 	}
 }
 
