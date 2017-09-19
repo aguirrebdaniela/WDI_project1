@@ -1,9 +1,9 @@
 
-$("#myImage").mouseover(function () {
-    $(this).attr("class", "image-replacement");
+$("#main_right").mouseover(function () {
+    $(this).attr("class", "newImageLeft");
 });
-$("#myImage").mouseout(function () {
-    $(this).attr("class", "ClassBeforeImage-replacement");
+$("#main_right").mouseout(function () {
+    $(this).attr("class", "leftImg");
 });
 
 
@@ -170,6 +170,7 @@ function checkWinner(){
 	setFinalMode()
 	if(totalPlayer1Score>totalPlayer2Score){	
 		document.getElementById("winner").innerHTML= playerName1 + " is the winner!"
+
 	}
 	else if(totalPlayer1Score<totalPlayer2Score){
 		document.getElementById("winner").innerHTML= playerName2 + " is the winner!"

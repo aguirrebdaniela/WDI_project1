@@ -1,11 +1,4 @@
 
-/*font-family: 'Chelsea Market', cursive;
-font-family: 'Finger Paint', cursive;
-font-family: 'Rubik Mono One', sans-serif;
-font-family: 'Yatra One', cursive;
-font-family: 'Lato', sans-serif;*/
-/*font-family: 'Montserrat', sans-serif;*/
-
 
 body#main_page {
 	margin:40px;
@@ -69,12 +62,12 @@ position: relative;
 
 }
 
-#main_left:hover {
+.newImageLeft {
 	background-image: url("./images/hover_left.png");
 	width: 249px;
 }
 
-#main_right:hover {
+.newImageRight {
 	background-image: url("./images/hover_right.png");
 	width: 249px;
 }
@@ -255,7 +248,10 @@ background-repeat: no-repeat;
 	color: black;
 	font-family: 'Finger Paint', cursive;
 	font-size: 22px;
+}
 
-
+#winnerImage{
+	background-image: url("./images/clap.gif")
+	height:100px;
 }
 
