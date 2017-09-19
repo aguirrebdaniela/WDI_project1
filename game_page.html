@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>2 players trivia</title>
+	<link rel="stylesheet" href="./style.css">
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Caveat|Chelsea+Market|Finger+Paint|Lato|Montserrat|Rubik+Mono+One|Yatra+One" rel="stylesheet">
+</head>
+
+<body id="index">
+
+<div id="light">
+	<p> Insert Player's 1 name </p> 
+	<input id= "playerName1" type="text" name="answerLightbox"><br>
+	<p> Insert Player's 2 name </p> 
+	<input id= "playerName2" type="text" name="answerLightbox"><br>
+	<input type="button" id="startButton" onclick="startGame()" value="Let's play!">
+</div>
+<div id="fade" onClick="lightbox_close();"></div> 
+
+<div id="containerIndex">
+		<div id="players">
+			<div id="player1"> 
+				<div id="name1"> Player 1 </div>
+				<div id="score1"> score: 0 </div>
+			</div>
+			<div id="player2"> 
+				<div id="name2"> Player 2 </div>
+				<div id="score2"> score: 0 </div>
+			</div>
+		</div>
+
+		<div id="playersTurn">
+		<p id="textPlayersTurn"></p>
+	</div>
+
+<div id="containerTwo" >
+
+
+		<table id="tableId" class="u-full-width">
+  			<thead>
+			    <tr>
+			      <th>Hogwarts</th>
+			      <th>Magic</th>
+			      <th>Harry</th>
+			      <th>Voldemort</th>
+			      <th>Others</th>
+			    </tr>
+			  </thead>
+			  <tbody id="table_body">
+			    <tr id="r1" class="500">
+			      <td id="r1c1">500</td>
+			      <td id="r1c2">500</td>
+			      <td id="r1c3">500</td>
+			      <td id="r1c4">500</td>
+			      <td id="r1c5">500</td>
+			      
+			    </tr>
+			    <tr id="r2" class="400">
+			      <td id='r2c1'>400</td>
+			      <td id='r2c2'>400</td>
+			      <td id='r2c3'>400</td>
+			      <td id='r2c4'>400</td>
+			      <td id='r2c5'>400</td>
+			    
+			    </tr>
+			     <tr id="r3" class="300">
+			      <td id="r3c1">300</td>
+			      <td id="r3c2">300</td>
+			      <td id="r3c3">300</td>
+			      <td id="r3c4">300</td>
+			      <td id="r3c5">300</td>
+			    </tr>
+			     <tr id="r4" class="200">
+			      <td id="r4c1">200</td>
+			      <td id="r4c2">200</td>
+			      <td id="r4c3">200</td>
+			      <td id="r4c4">200</td>
+			      <td id="r4c5">200</td>
+			     
+			    </tr>
+			     <tr id="r5" class="100">
+			      <td id="r5c1">100</td>
+			      <td id="r5c2">100</td>
+			      <td id="r5c3">100</td>
+			      <td id="r5c4">100</td>
+			      <td id="r5c5">100</td>
+			      
+			    </tr>	
+  			</tbody>
+		</table>
+
+	<div id="questionBox" class="u-full-width">
+			<div id="questionDiv">
+					<form id="questionForm" autocomplete="off">
+		  			<p id="questionText"> </p><br> 
+		  			<input id="answer" type="text" name="answer"><br>
+						<input id="questionButton" type="button" value="Submit">
+					</form>
+				<button id="backQ"> Back </button>
+			</div>
+			
+			<div id="succesfulAns">
+					<p id="correctAns"> </p>
+					<button id="backA"> Back </button>
+			</div>
+			<div id="notSuccesfulAns">
+					<p id="wrongAns"> </p>
+					<button id="backW"> Back </button>
+			</div>
+			<div id="endMode">
+				<p id="winner"> Winner </p>
+				<p id="winnerimage"></p>
+			<button id="backE"> Back </button>
+			</div>
+
+
+	</div>
+
+	<div id='lastButtons'>
+	<input id="endGame" type="button" value="End Game"   </a>
+	<input id="backHome" type="button" value="Back to Home" onclick="location.href='index.html'">
+	</div>
+</div>
+</div>
+
+		<script type="text/javascript" src="./starter.js"></script>
+</body>
+</html>
